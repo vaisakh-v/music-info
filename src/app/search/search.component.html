@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="col-9">
-      <input #searchText type="text" (keyup.enter)="handleSearch(searchText)" class="form-control">
+      <input #searchText name="searchQuery" [(ngModel)]="query" type="text" (keyup.enter)="handleSearch(searchText)" class="form-control">
     </div>
     <div class="col-3">
       <button class="btn btn-outline-primary" (click)="handleSearch(searchText)">Search</button>
@@ -16,13 +16,12 @@
       <div class="content" *ngIf="!isImageLoaded">
         <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
       </div>
-      <!-- <img class="card-img-top" src="http://picsum.photos/150/75/?random" alt="{{ artist.name }}" (load)="imageLoaded()"> -->
-      <img class="card-img-top" [src]="getArtistImage(artist.name)" alt="{{ artist.name }}" (load)="imageLoaded()">
+      <img class="card-img-top img-thumbnail" src="{{ artist.imageURL }}" alt="{{ artist.name }}" (load)="imageLoaded()">
      
       <div class="card-body">
         <h3 class="card-title">{{ artist.name }}</h3>
         <p class="card-text">
-          <span class="badge badge-success" *ngFor="let tag of artist.tags">{{ tag.name }}</span>
+          <span class="badge badge-success" style="margin:2px" *ngFor="let tag of artist.tags">{{ tag.name }}</span>
         </p>
         <a href="#" class="btn btn-primary">Read more ...</a>
       </div>

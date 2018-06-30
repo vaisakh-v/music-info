@@ -12,4 +12,8 @@ export class TitlebarComponent implements OnInit {
   ngOnInit() {
   }
 
+  submitQuery(form){
+    form.submit();
+  }
+
 }
