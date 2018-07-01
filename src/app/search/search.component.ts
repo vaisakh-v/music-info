@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       if (params['query']) {
         this.query = params['query'];
+        this.handleSearch();
       }
       console.log("Query: " + this.query);
     }, error => {
@@ -36,8 +37,8 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  handleSearch(searchText) {
-    this.getArtistInfo(searchText.value).subscribe(artists => {
+  handleSearch() {
+    this.getArtistInfo(this.query).subscribe(artists => {
       console.log("parsing:" + artists.artists);
       this.artistData = artists.artists;
       console.log("Artist count:" + this.artistData.length);
