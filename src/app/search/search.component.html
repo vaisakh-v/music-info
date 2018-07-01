@@ -4,7 +4,19 @@
   </div>
   <div class="row">
     <div class="col-9">
-      <input #searchText name="searchQuery" [(ngModel)]="query" type="text" (keyup.enter)="handleSearch(searchText)" class="form-control">
+      <input #searchText name="searchQuery" [(ngModel)]="query" type="text" (keyup.enter)="handleSearch(searchText)" class="form-control"
+        list="artists">
+      <datalist id="artists">
+        <option value="Aerosmith">
+        <option value="Bon Jovi">
+        <option value="Coroner">
+        <option value="Def Leppard">
+        <option value="Kreator">
+        <option value="Megadeth">
+        <option value="Metallica">
+        <option value="Slayer">
+        <option value="Testament">
+      </datalist>
     </div>
     <div class="col-3">
       <button class="btn btn-outline-primary" (click)="handleSearch(searchText)">Search</button>
@@ -12,12 +24,12 @@
   </div>
   <hr>
   <div class="row" *ngIf="searchVisible">
-    <div class="shadow card col-lg-4 col-xs-12"  *ngFor="let artist of artistData">
+    <div class="shadow card col-lg-4 col-xs-12" *ngFor="let artist of artistData">
       <div class="content" *ngIf="!isImageLoaded">
         <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
       </div>
       <img class="card-img-top img-thumbnail" src="{{ artist.imageURL }}" alt="{{ artist.name }}" (load)="imageLoaded()">
-     
+
       <div class="card-body">
         <h3 class="card-title">{{ artist.name }}</h3>
         <p class="card-text">
